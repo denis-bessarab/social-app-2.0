@@ -37,13 +37,15 @@ export const Post = (props) => {
     }, [])
 
     function likeButtonHandle() {
-        if (!isLikedByUser) {
-            post.likes.push([])
-        } else {
-            post.likes.pop()
+        if (isLoggedIn) {
+            if (!isLikedByUser) {
+                post.likes.push([])
+            } else {
+                post.likes.pop()
+            }
+            setIsLikedByUser(!isLikedByUser)
+            props.likeDislike(post, isLikedByUser)
         }
-        setIsLikedByUser(!isLikedByUser)
-        props.likeDislike(post, isLikedByUser)
     }
 
     return (
