@@ -14,16 +14,14 @@ import {useLocation} from "react-router-dom";
 export default function NewApp() {
     const currentTheme = useSelector(() => store.getState().theme.value)
     const location = useLocation().pathname
-    console.log(useLocation().pathname)
     const isLoading = useSelector(() => store.getState().isActiveLoader.value)
 
     return (
         <>
             <ThemeProvider theme={currentTheme === "light" ? lightTheme : darkTheme}>
                 <CssBaseline/>
-                <button onClick={() => test()}>test</button>
                 <AppNavbar/>
-                {location === "/social-app-2.0" && <Feed/>}
+                {location === "/social-app-2.0/" && <Feed/>}
                 <Outlet/>
                 <Backdrop
                     sx={{color: (theme) => theme.palette.primary.main, zIndex: (theme) => theme.zIndex.drawer + 1}}

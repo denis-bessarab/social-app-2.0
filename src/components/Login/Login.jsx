@@ -41,7 +41,7 @@ export default function Login() {
             localStorage.setItem('id', response.data.id)
             localStorage.setItem('jwt_token', response.data.jwt_token)
             localStorage.setItem('ttl', response.data.ttl)
-            navigate('/social-app-2.0')
+            navigate('/social-app-2.0/')
         }
     };
 

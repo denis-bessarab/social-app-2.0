@@ -28,7 +28,7 @@ export default function AppNavbar() {
             <AppBar position="static" color={'secondary'}>
                 <Toolbar>
                     <Typography
-                        onClick={() => navigate('/social-app')}
+                        onClick={() => navigate('/social-app-2.0/')}
                         color='primary'
                         variant='h6'
                         sx={{
