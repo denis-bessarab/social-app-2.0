@@ -46,7 +46,7 @@ export default function AppNavbar() {
                         onClick={() => dispatch(switchTheme())}
                         color={'textPrimary'}
                     >
-                        {currentTheme === 'light' ? <LightModeOutlinedIcon/> : <DarkModeOutlinedIcon/>}
+                        {currentTheme === 'light' ? <DarkModeOutlinedIcon/> : <LightModeOutlinedIcon/>}
                     </IconButton>
                     <Box sx={{flexGrow: 1}}/>
                     {isLoggedIn && localStorage.username &&
