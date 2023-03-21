@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Button, Grid, InputAdornment, Paper, TextField, Typography} from "@mui/material";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import PasswordRoundedIcon from '@mui/icons-material/PasswordRounded';
@@ -7,7 +7,8 @@ import {useNavigate} from "react-router-dom";
 import {logIn} from "../../store/isLoggedInSlice";
 import {useDispatch} from "react-redux";
 import {changeLoaderState} from "../../store/isActiveLoaderSlice";
-
+import Dialog from '@mui/material/Dialog';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 
 export default function Login() {
 
@@ -17,8 +18,15 @@ export default function Login() {
     };
 
     const [formData, setFormData] = useState(defaultValues)
+    const [isDialogVisible, setIsDialogVisible] = useState(false)
     const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsDialogVisible(true)
+        }, 2000)
+    }, [])
 
 
     const handleInputChange = (e) => {
@@ -47,6 +55,16 @@ export default function Login() {
 
     return (
         <form onSubmit={(e) => handleSubmit(e)} style={{marginTop: '20vh'}}>
+            <Dialog open={isDialogVisible} onClick={() => setIsDialogVisible(false)}>
+                {/*<DialogTitle>Set backup account</DialogTitle>*/}
+                <Typography padding={2}>Welcome! In this application you will be able to log in on test user's profiles,
+                    provided by
+                    API
+                    developers Akademia 108. Please
+                    contact me on E-mail: <a
+                        href="mailto:bessarab.d.p@gmail.com">Bessarab.d.p@gmail.com</a> to get test user's login and
+                    password.</Typography>
+            </Dialog>
             <Grid
                 container
                 alignItems="center"
@@ -60,8 +78,9 @@ export default function Login() {
                         justify="center"
                         direction="column"
                     >
-                        <Grid item>
-                            <Typography mb='25px' variant="h6">Social-app</Typography>
+                        <Grid item display='flex' flexDirection='row' alignItems='center' mb='25px'>
+                            <Typography variant="h6" mr={2}>Social-app </Typography>
+                            <HelpOutlineIcon color='primary' cursor='pointer' onClick={() => setIsDialogVisible(true)}/>
                         </Grid>
                         <Grid item>
                             <TextField
