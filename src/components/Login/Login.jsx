@@ -25,7 +25,7 @@ export default function Login() {
     useEffect(() => {
         setTimeout(() => {
             setIsDialogVisible(true)
-        }, 2000)
+        }, 1000)
     }, [])
 
 
@@ -42,7 +42,8 @@ export default function Login() {
         dispatch(changeLoaderState(true))
         const response = await logInApiCall(formData)
         dispatch(changeLoaderState(false))
-        if (response.data.error === true) {
+        if (response.status === 201) {
+            console.log(response)
         } else {
             dispatch(logIn())
             localStorage.setItem('username', response.data.username)
